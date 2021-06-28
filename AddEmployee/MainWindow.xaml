@@ -4,9 +4,101 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AddEmployee"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded"
+        Title="Сотрудники" Height="450" Width="800">
+    <Grid Background="#FF1D1B1B">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="dgEmployee"
+                  Margin="10"
+                  Grid.ColumnSpan="3"
+                  Grid.RowSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя"/>
+                <DataGridTextColumn Binding="{Binding MiddleName}" Header="Отчество"/>
+                <DataGridTextColumn Binding="{Binding Competence.Name}" Header="Специальность"/>
+                <DataGridTextColumn Binding="{Binding WorkShift.Name}" Header="Смена"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBox x:Name="txtLName"
+                 Width="150"
+                     Height="40"
+                 HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                 Grid.Column="4"
+                 materialDesign:HintAssist.Hint="Введите фамилию"
+                 Foreground="#8ce4ff"
+                 FontWeight="Bold"/>
+
+        <TextBox x:Name="txtFName"
+                 Width="150"
+                 Height="40"
+                 HorizontalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Grid.Column="4"
+                 Grid.Row="1"
+                 materialDesign:HintAssist.Hint="Введите имя"
+                 Foreground="#8ce4ff"
+                 FontWeight="Bold"/>
+
+
+
+        <TextBox x:Name="txtMName"
+                 Width="150"
+                     Height="40"
+                 HorizontalAlignment="Center"
+                     VerticalContentAlignment="Center"
+                 Grid.Column="4"
+                 Grid.Row="2"
+                 materialDesign:HintAssist.Hint="Введите отчество"
+                 Foreground="#8ce4ff"
+                 FontWeight="Bold"/>
+
+        <ComboBox x:Name="cbSpec"
+                  Grid.Column="4"
+                  Grid.Row="3"
+                  Width="150"
+                  Height="40"
+                  materialDesign:HintAssist.Hint="Специальность"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ID_Competence_RK"
+                  Foreground="#00ff47"
+                  FontWeight="Bold"/>
+
+        <ComboBox x:Name="cbWorkShift"
+                  Grid.Column="4"
+                  Grid.Row="5"
+                  Width="150"
+                  Height="40"
+                  materialDesign:HintAssist.Hint="Смена"
+                  DisplayMemberPath="Name"
+                  SelectedValuePath="ID_WorkShift_RK"
+                  Foreground="#00ff47"
+                  FontWeight="Bold">
+        </ComboBox>
+
+        <Button Content="Добавить" FontSize="20"
+                Grid.Row="5" Grid.Column="1"
+                Height="50" Width="150"
+                Background="Transparent"
+                Foreground="Wheat"
+                Click="Add_Click"/>
     </Grid>
 </Window>
