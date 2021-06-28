@@ -27,7 +27,8 @@
         <DataGrid x:Name="dgEmployee"
                   Margin="10"
                   Grid.ColumnSpan="3"
-                  Grid.RowSpan="4">
+                  Grid.RowSpan="4"
+                  AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия"/>
                 <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя"/>
